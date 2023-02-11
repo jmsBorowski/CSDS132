@@ -1,0 +1,268 @@
+/*Testing */
+> Account accountTest = new Account("1", 1000);
+> CreditAccount creditTest = new CreditAccount("1", 2.0);
+> LibraryAccount libraryTest = new LibraryAccount("1", 1000, 2.0, 3.0);
+> StudentAccount studentTest = new StudentAccount("1", "Jaiden");
+/* Acount class testing */
+// testing - getter method
+// testing - constructor, if it sets account number correctly
+// expects - 1 because input is 1 in the constructor
+> accountTest.getAccountNumber()
+"1"
+// testing - getter method
+// testing - constructor, if it sets the balance limir correctly
+// expects - 1000 because input is 1000 in the constructor
+> accountTest.getBalanceLimit()
+1000
+// testing - setBalanceLimit method
+// expects - 2000 because 2000 was the input value
+> accountTest.setBalanceLimit(2000)
+> accountTest.getBalanceLimit()
+2000
+// testing - getter method
+// testing - charge method, if it adds to balance
+// expects - 10.0 because charge adds 10 to the balance (0+10=10)
+> accountTest.charge(10)
+> accountTest.getBalance()
+10.0
+// testing - credit method, if it subtracts from balance
+// expects - 7.0 because credit subtracted 3 from the balance (10-3=7)
+> accountTest.credit(3)
+> accountTest.getBalance()
+7.0
+/* Library Account class testing */
+// testing - constructor, if it sets account number correctly
+// expects - "1" because "1" was the input value
+> libraryTest.getAccountNumber()
+"1"
+// testing - getter method
+// testing - constructor, if it sets book fine correctly
+// expects - 2.0 because 2.0 was the input value
+> libraryTest.getBookFine()
+2.0
+// testing - setter method
+// expects - input value as a double
+> libraryTest.setBookFine(0)
+> libraryTest.getBookFine()
+0.0
+> libraryTest.setBookFine(-1)
+> libraryTest.getBookFine()
+- 1.0
+> libraryTest.setBookFine(10000000000)
+Literal is out of range: 10000000000
+> libraryTest.setBookFine(10000)
+> libraryTest.getBookFine()
+10000.0
+// testing - setter method
+// expects - 1.0 because 1.0 was the input value
+> libraryTest.setBookFine(1.0)
+> libraryTest.getBookFine()
+1.0
+// testing - getter method
+// testing - constructor, if it sets reserve fine correctly
+// expects - 3.0 because 3 was the input value
+> libraryTest.getReserveFine()
+3.0
+// testing - setter method
+// expects - 2.0 because 2.0 was the input value
+> libraryTest.setReserveFine(2.0)
+> libraryTest.getReserveFine()
+2.0
+// testing - getter method
+// testing - incrementOverdueBooks method, if it adds one to the number of 
+overdue books
+// expects - 2 because incrementOverdueBooks was run twice, which should 
+add 2 to the
+//           number of overdue books, which was initially set at 0 (1+1=2)
+> libraryTest.incrementOverdueBooks()
+> libraryTest.incrementOverdueBooks()
+> libraryTest.getNumberOverdueBooks()
+2
+// testing - decrementOverdueBooks method, if it subtracts one from the 
+number of overdue books
+// expects - 1 because decrementOverdueBooks should subtract 1 from the 
+number of overdue books,
+//           which was 2 (2-1=1)
+> libraryTest.decrementOverdueBooks()
+> libraryTest.getNumberOverdueBooks()
+1
+// testing - getter method
+// testing - incrementOverdueReserve method, if it adds one to the number 
+of overdue reserves
+// expects - 2 because incrementOverdueReserve was run twice, which should 
+add 2 to the
+//           number of overdue reserves, which was initially set at 0 
+(1+1=2)
+> libraryTest.incrementOverdueReserve()
+> libraryTest.incrementOverdueReserve()
+> libraryTest.getNumberOverdueReserve()
+2
+// testing - decrementOverdueReserve method, if it subtracts one from the 
+number of overdue reserves
+// expects - 1 because decrementOverdueReserve should subtract 1 from the 
+number of overdue reserves,
+//           which was 2 (2-1=1)
+> libraryTest.decrementOverdueReserve()
+> libraryTest.getNumberOverdueReserve()
+1
+// testing - constructor, if it sets balance limit correctly
+// expects - 1000 because 1000 was the input value
+> libraryTest.getBalanceLimit()
+1000
+// testing - canBorrow method, if balance is less than limit
+// expects - true because the account balance is 0, which is less than the 
+balance limit of 1000
+> libraryTest.canBorrow()
+true
+// testing - canBorrow method, if balance is greater than limit
+// expects - false because the account balance is 2000, which is greater 
+than the balance limit of 1000
+> libraryTest.charge(2000)
+> libraryTest.getBalance()
+2000.0
+> libraryTest.canBorrow()
+false
+// testing - canBorrow method, if balance is equal to limit
+// expects - true because the account balance is 1000, which is equal to 
+the balance limit of 1000
+> libraryTest.credit(100)
+> libraryTest.getBalance()
+100.0
+> libraryTest.canBorrow()
+true
+// testing - endOfDay method, if it modifies balance correctly
+// expects - 1003.0 because the balance should be increased by the overdue 
+book fines and overdue reserve fines
+//   overdue books = 1
+//   book fine = 1
+//   overdue reserves = 1
+//   reserves fine = 2
+//   account balance = 1000
+//   (1000 + 1*1 + 1*2 = 1003)
+> libraryTest.endOfDay()
+> libraryTest.getBalance()
+1003.0
+/* Credit Account class testing */
+// testing - constructor, if it sets account number correctly
+// expects - "1" because "1" was the input value in the constructor
+> creditTest.getAccountNumber()
+"1"
+// testing - getter method
+// testing - constructor, if it sets interest rate correctly
+// expects - 2.0 because 2.0 was input in the constructor
+> creditTest.getInterestRate()
+2.0
+// testing - setter method
+// expects - 3.0 because 3.0 was the input value
+> creditTest.setInterestRate(3.0);
+> creditTest.getInterestRate()
+3.0
+// testing - getter method
+// testing - endOfMonth method, if it correctly modifies monthlyPayment
+// expects 0.0 because  monthlyPayment is set to equal the value of 
+balance, which is currently 0
+> creditTest.endOfMonth()
+> creditTest.getMonthlyPayment()
+0.0
+// testing - getter method
+// testing - endOfMonth method, if it correctly modifies 
+amountPaidThisMonth
+// expects 0.0 because amountPaidThisMonth is set to 0
+> creditTest.getAmountPaidThisMonth()
+0.0
+// testing - credit method, if it correctly adds input to 
+ammountPaidThisMonth
+// expects - 2.0 because 2.0 + (original value, which was 0) = 2.0
+> creditTest.credit(2.0)
+> creditTest.getAmountPaidThisMonth()
+2.0
+// testing - credit method, if it correctly decreases account balance
+// expects - -2.0 because (original value, which was 0) - 2.0 = -2.0
+> creditTest.credit(2.0)
+> creditTest.getBalance()
+- 2.0
+/* Student Account class testing */
+// testing - getter method
+// testing - constructor, if the constructor sets the name correctly
+// expects - "Jaiden" because "Jaiden" was the input value in the 
+constructor
+> studentTest.getName()
+"Jaiden"
+// testing - setter method
+// expects - "Jaiden B." because "Jaiden B." was the input value
+> studentTest.setName("Jaiden B.");
+> studentTest.getName()
+"Jaiden B."
+// testing - setter method
+// testing - getter method
+// expects - "2000 23rd ave NE Seattle, WA" because "2000 23rd ave NE 
+Seattle, WA" was the input value
+> studentTest.setAddress("2000 23rd ave NE Seattle, WA");
+> studentTest.getAddress()
+"2000 23rd ave NE Seattle, WA"
+// testing - setter method
+// testing - getter method
+// expects - null because null was the input value
+> studentTest.setLibraryAccount(null);
+> studentTest.getLibraryAccount()
+null
+// testing - setter method
+// expects - LibraryAccount@7eb7add because LibraryAccount@7eb7add is the 
+location of the input LibraryAccount object
+LibraryAccount libraryTester = new LibraryAccount("1", 1000, 2, 3);
+> studentTest.setLibraryAccount(libraryTester);
+> studentTest.getLibraryAccount()
+LibraryAccount@7eb7add
+> libraryTester
+LibraryAccount@7eb7add
+// testing - setter method
+// expects - CreditAccount@743d6997 because CreditAccount@743d6997 is the 
+location of the input CreditAccount object
+> CreditAccount tuitionTest = new CreditAccount("1", 5.0);
+> studentTest.setTuitionAccount(tuitionTest);
+> studentTest.getTuitionAccount()
+CreditAccount@743d6997
+> creditTest
+CreditAccount@743d6997
+// testing - setter method
+// expects - CreditAccount@670ebf5e because CreditAccount@670ebf5e is the 
+location of the input CreditAccount object
+> CreditAccount diningTest = new CreditAccount("1", 5.0);
+> studentTest.setDiningAccount(diningTest);
+> studentTest.getDiningAccount()
+CreditAccount@670ebf5e
+> diningAccount
+CreditAccount@670ebf5e
+// testing - getter method
+// testing - constructor, if it sets the balance correctly
+// expects - 0 because the account balances and refund amount are all 0
+> studentTest.getBalance()
+0.0
+// testing - getter method, if it correctly adds accounts and refund 
+amount
+// testing - charge, if it correctly adds input to tuition balance
+// expects - 200 because (200 from tuition) + (0 from library) + (0 from 
+dining) + (balance which is 0) = 200
+> studentTest.charge(200)
+> tuitionTest.getBalance()
+200.0
+> diningTest.getBalance()
+0.0
+> libraryTester.getBalance()
+0.0
+> studentTest.getBalance()
+200.0
+// testing - credit, more than enough
+// expects - -1800.0 because (200 from tuition) - 2000 + (0 from dining) + 
+(0 from library) = -1820
+// this seems to be incorrect because tuition balance should now be 0, but 
+the refund amount took all of the inputed money
+> studentTest.credit(2000)
+> studentTest.getBalance()
+- 1800.0
+> tuitionTest.getBalance()
+200.0
+> diningTest.getBalance()
+0.0
+> libraryTester.getBalance()
+0.0
