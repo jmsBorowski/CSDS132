@@ -1,0 +1,166 @@
+/**
+* Jaiden Borowski
+* CSDS 132
+* HW2 class tester
+*/
+//alphabeticalOrder:
+// example inputs
+> HW2.alphabeticalOrder("An Ottuxy!")
+true
+> HW2.alphabeticalOrder("aAa-bB-c")
+true
+> HW2.alphabeticalOrder("432!!!")
+true
+> HW2.alphabeticalOrder("ostrich")
+false
+> HW2.alphabeticalOrder("GHg")
+false
+// 0, testing empty string (expects true)
+> HW2.alphabeticalOrder("")
+true
+// 1, testing string with only one char (expects true)
+> HW2.alphabeticalOrder("a")
+true
+// many, testing string with many chars (expects true, false)
+> HW2.alphabeticalOrder("abc, efg hijklmnop.")
+true
+> HW2.alphabeticalOrder("abc, abc hijklmnop.")
+false
+// first, out of order 'z' is placed at the front of the string 
+(expects false)
+> HW2.alphabeticalOrder("z a b c d e f g ")
+false
+// middle, out of order 'a' is placed in the middle of the string 
+(expects false)
+> HW2.alphabeticalOrder("a b c a e f g")
+false
+// last, out of order 'a' is placed at the end of the string (expects 
+false)
+> HW2.alphabeticalOrder("a b c d e f g a")
+false
+//casearCipher:
+// example input
+> HW2.casearCipher("A Quiz About Zebras on May 13!", 1)
+resulted - "B Rvja Bcpvu Afcsbt po Nbz 24!"
+expected - "B Rvja Bcpvu Afcsbt po Nbz 24!"
+// 0, testing string moved 0 chars (expects "Abc")
+> HW2.casearCipher("Abc", 0)
+"Abc"
+// 1, testing string moved 1 char (expects "Bcd")
+> HW2.casearCipher("Abc", 1)
+"Bcd"
+// many, testing string moved many chars (expects "Def")
+> HW2.casearCipher("Abc", 3)
+"Def"
+// 0, testing empty string (expects "")
+> HW2.casearCipher("", 1)
+""
+// 1, testing string with one char (expects "b")
+> HW2.casearCipher("a", 1)
+"b"
+// many, testing string with many chars (expects "Ifmmp, xpsme!")
+> HW2.casearCipher("Hello, world!", 1)
+"Ifmmp, xpsme!"
+//repeatChars:
+// example inputs
+> HW2.repeatChars("Good day!", 3)
+resulted - "GGGooooooddd   dddaaayyy!!!"
+expected - "GGGooooooddd   dddaaayyy!!!"
+> HW2.repeatChars("Good day!", -3)
+resulted - "!!!yyyaaaddd   dddooooooGGG"
+expected - "!!!yyyaaaddd   dddooooooGGG"
+// 0, testing chars repeated 0 times (expects "")
+> HW2.repeatChars("Abc", 0)
+""
+// 1, testing chars repeated 1 time (expects "Abc")
+> HW2.repeatChars("Abc", 1)
+"Abc"
+// many, testing chars repeated many times (expects "AAAbbbccc")
+> HW2.repeatChars("Abc", 3)
+"AAAbbbccc"
+// 0, testing empty string (expects "")
+> HW2.repeatChars("", 1)
+""
+// 1, testing string with one char (expects "a")
+> HW2.repeatChars("a", 1)
+"a"
+// many, testing string with many chars (expects "HHHeeellllllooo,,,   
+wwwooorrrlllddd!!!")
+> HW2.repeatChars("Hello, world!", 3)
+"HHHeeellllllooo,,,   wwwooorrrlllddd!!!"
+//repeatWords:
+// example sentence
+> HW2.repeatWords("'How are you?', I asked.", 2)
+resulted - "'How How are are you you?', I I asked asked."
+expected - "'How How are are you you?', I I asked asked."
+// 0, testing words repeated 0 times (expects "")
+> HW2.repeatWords("Abc", 0)
+""
+// 1, testing words repeated 1 time (expects "Abc")
+> HW2.repeatWords("Abc", 1)
+"Abc"
+// many, testing words repeated many times (expects "Abc Abc Abc")
+> HW2.repeatWords("Abc", 3)
+"Abc Abc Abc"
+// 0, testing empty string (expects "")
+> HW2.repeatWords("", 1)
+""
+// 1, testing string with one char (expects "a")
+> HW2.repeatWords("a", 1)
+"a"
+// many, testing string with many chars (expects "Hello Hello Hello, 
+world world world!")
+> HW2.repeatWords("Hello, world!", 3)
+"Hello Hello Hello, world world world!"
+//repeatValues:
+// example input
+> double[] arr = {1.1,2.3,3.3}
+> HW2.repeatValues(arr,3)
+resulted - { 1.1, 1.1, 1.1, 2.3, 2.3, 2.3, 3.3, 3.3, 3.3 }
+expected - {1.1, 1.1, 1.1, 2.2, 2.2, 2.2, 3.3, 3.3, 3.3}
+// 0, testing values repeated 0 times (expects {})
+> HW2.repeatValues(arr,0)
+{  }
+// 1, testing values repeated 1 time (expects {1.1, 2.3, 3.3})
+> HW2.repeatValues(arr,1)
+{ 1.1, 2.3, 3.3 }
+// many, testing values repeated many times (expects {1.1, 1.1, 1.1, 
+1.1, 1.1, 2.3, 2.3, 2.3, 2.3, 2.3, 3.3, 3.3, 3.3, 3.3, 3.3})
+> HW2.repeatValues(arr,5)
+{ 1.1, 1.1, 1.1, 1.1, 1.1, 2.3, 2.3, 2.3, 2.3, 2.3, 3.3, 3.3, 3.3, 
+3.3, 3.3 }
+// 0, testing an empty array (expects {})
+> double[] arr = {}
+> HW2.repeatValues(arr,1)
+{  }
+// 1, testing an array with 1 value (expects {1.0})
+> double[] arr = {1.0}
+> HW2.repeatValues(arr,1)
+{ 1.0 }
+// many, testing an array with many values (expects {1.0, 2.0, 3.0, 
+4.0, 5.0})
+> double[] arr = {1.0, 2.0, 3.0, 4.0, 5.0}
+> HW2.repeatValues(arr,1)
+{ 1.0, 2.0, 3.0, 4.0, 5.0 }
+//isWindingPath:
+// example input
+> double[][] arr = {{10,11,14,15},{9,12,13},{8,1,2,3},{7,6,5,4}}
+> HW2.isWindingPath(arr)
+true
+> double[][] arr = {{1,2},{3,4}}
+> HW2.isWindingPath(arr)
+false
+// 0, testing a double array with 0 values (expects true)
+> HW2.isWindingPath(arr)
+true
+// 1, testing a double array with 1 value (expects true)
+> double[][] arr = {{1.0}}
+> HW2.isWindingPath(arr)
+true
+// many, testing a double array with many values (expects true, false)
+> double[][] arr = {{1.0,2.0,3.0},{6.0,5.0,4.0}}
+> HW2.isWindingPath(arr)
+true
+> double[][] arr = {{1.0,2.0,3.0},{6.0,7.0,4.0}}
+> HW2.isWindingPath(arr)
+false 
