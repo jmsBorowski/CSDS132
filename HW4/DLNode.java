@@ -21,8 +21,7 @@ public class DLNode<T> {
   private DLNode<T> previous;
   
   /**
-   * The constructor.  Creates a node and puts it into place in the double linked 
-list.
+   * The constructor.  Creates a node and puts it into place in the double linked list.
    * @param element  the element to be stored in the node
    * @param previous the node that will be before this node in the list, or null if
 no node is before this one
