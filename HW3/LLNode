@@ -1,4 +1,9 @@
-
+/**
+ * The node of a linked list
+ */
+public class LLNode<T> {
+  /** the element stored in the node */
+  private T element;
   
   /** a reference to the next node of the list */
   private LLNode<T> next;
