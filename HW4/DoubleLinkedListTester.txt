@@ -1,0 +1,588 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+import java.util.Iterator; 
+/** 
+ * A DoubleLinkedListTester class to test the methods of the DoubleLinkedList 
+class.
+ * 
+ * @author <em>Jaiden Borowski</em> 
+ * @version 1.0
+ */ 
+public class DoubleLinkedListTester {
+  
+  /**
+   * Test the isEmpty method 
+   */ 
+  @Test
+  public void testIsEmpty() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    assertEquals("Testing is Empty method EMPTY", "true", 
+Boolean.toString(dll.isEmpty())); 
+    dll.addToBack("A"); 
+    assertEquals("Testing is Empty method ONE", "false", 
+Boolean.toString(dll.isEmpty())); 
+    dll.addToBack("C"); 
+    dll.addToBack("G"); 
+    dll.addToBack("T"); 
+    assertEquals("Testing is Empty method MANY", "false", 
+Boolean.toString(dll.isEmpty())); 
+  } 
+  
+  /**
+   * Test the getLength method 
+   */ 
+  @Test
+  public void testGetLength() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    assertEquals("Testing get length EMPTY", "0", 
+Integer.toString(dll.getLength())); 
+    dll.addToBack("A"); 
+    assertEquals("Testing get length method ONE", "1", 
+Integer.toString(dll.getLength())); 
+    dll.addToBack("C"); 
+    dll.addToBack("G"); 
+    dll.addToBack("T"); 
+    assertEquals("Testing get length method MANY", "4", 
+Integer.toString(dll.getLength())); 
+  }
+  
+  /**
+   * Test the getFront method 
+   */ 
+  @Test
+  public void testGetFront() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    assertEquals("Testing get front method EMPTY", "null", 
+String.valueOf(dll.getFront())); 
+    dll.addToFront("A"); 
+    assertEquals("Testing get front method ONE", "A", dll.getFront().getElement());
+    dll.addToFront("C"); 
+    dll.addToFront("G"); 
+    dll.addToFront("T"); 
+    assertEquals("Testing get front method MANY", "T", 
+dll.getFront().getElement()); 
+  }
+  
+  /**
+   * Test the setFront method 
+   */ 
+  @Test
+  public void testSetFront() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.setFront(new DLNode<String>(null,null,null)); 
+    assertEquals("Testing set front method EMPTY", "null", 
+String.valueOf(dll.getFront().getElement())); 
+    dll.setFront(new DLNode<String>("A",null,null)); 
+    assertEquals("Testing set front method ONE", "A", dll.getFront().getElement());
+    dll.setFront(new DLNode<String>("C",null,null)); 
+    dll.setFront(new DLNode<String>("G",null,null)); 
+    dll.setFront(new DLNode<String>("T",null,null)); 
+    assertEquals("Testing get front method MANY", "T", 
+dll.getFront().getElement()); 
+  } 
+  
+  /**
+   * Test the getBack method 
+   */ 
+  @Test
+  public void testGetBack() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    assertEquals("Testing get back method EMPTY", "null", 
+String.valueOf(dll.getBack())); 
+    dll.addToBack("A"); 
+    assertEquals("Testing get back method ONE", "A", dll.getBack().getElement()); 
+    dll.addToBack("C"); 
+    dll.addToBack("G"); 
+    dll.addToBack("T"); 
+    assertEquals("Testing get back method MANY", "T", dll.getBack().getElement()); 
+  }
+  
+  /**
+   * Test the setBack method 
+   */ 
+  @Test
+  public void testSetBack() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.setBack(new DLNode<String>(null,null,null)); 
+    assertEquals("Testing set back method EMPTY", "null", 
+String.valueOf(dll.getBack().getElement())); 
+    dll.setBack(new DLNode<String>("A",null,null)); 
+    assertEquals("Testing set back method ONE", "A", dll.getBack().getElement()); 
+    dll.setBack(new DLNode<String>("C",null,null)); 
+    dll.setBack(new DLNode<String>("G",null,null)); 
+    dll.setBack(new DLNode<String>("T",null,null)); 
+    assertEquals("Testing get back method MANY", "T", dll.getBack().getElement()); 
+  } 
+  
+  /**
+   * Test the addToFront method 
+   */ 
+  @Test
+  public void testAddToFront() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToFront(""); 
+    assertEquals("Testing add to front method EMPTY", "", 
+dll.getFront().getElement()); 
+    dll.addToFront("A"); 
+    assertEquals("Testing add to front method ONE", "A", 
+dll.getFront().getElement()); 
+    dll.addToFront("C"); 
+    dll.addToFront("G"); 
+    dll.addToFront("T"); 
+    assertEquals("Testing add to front method MANY", "T", 
+dll.getFront().getElement()); 
+  }
+    
+  /**
+   * Tests the addToFront method of DoubleLinkedList.
+   */
+  @Test
+  public void testAddToFront2() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    list.addToFront(3);
+    list.addToFront(2);
+    list.addToFront(1);
+    DLNode<Integer> head = list.getFront();
+    DLNode<Integer> tail = list.getBack();
+    
+    assertEquals("Testing first node of list", new Integer(1), head.getElement());
+    assertEquals("Testing second node of list", new Integer(2), 
+head.getNext().getElement());
+    assertEquals("Testing third node of list", new Integer(3), 
+head.getNext().getNext().getElement());
+    assertEquals("Testing end of list", null, head.getNext().getNext().getNext());
+    
+    assertEquals("Testing node at back of list", new Integer(3), 
+tail.getElement());
+    assertEquals("Testing next to last node", new Integer(2), 
+tail.getPrevious().getElement());
+    assertEquals("Testing third to last node", new Integer(1), 
+tail.getPrevious().getPrevious().getElement());
+    assertEquals("Testing front of list", null, 
+tail.getPrevious().getPrevious().getPrevious());
+  } 
+  
+  /**
+   * Test the addToBack method 
+   */ 
+  @Test
+  public void testAddToBack() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack(""); 
+    assertEquals("Testing add to back method EMPTY", "", 
+dll.getBack().getElement()); 
+    dll.addToBack("A"); 
+    assertEquals("Testing add to back method ONE", "A", 
+dll.getBack().getElement()); 
+    dll.addToBack("C"); 
+    dll.addToBack("G"); 
+    dll.addToBack("T"); 
+    assertEquals("Testing add to back method MANY", "T", 
+dll.getBack().getElement()); 
+  }
+  
+  /**
+   * Tests the addToBack method of DoubleLinkedList.
+   */
+  @Test
+  public void testAddToBack2() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    list.addToBack(1);
+    list.addToBack(2);
+    list.addToBack(3);
+    DLNode<Integer> head = list.getFront();
+    DLNode<Integer> tail = list.getBack();
+      
+    assertEquals("Testing last node of list", new Integer(3), tail.getElement());
+    assertEquals("Testing next to last node", new Integer(2), 
+tail.getPrevious().getElement());
+    assertEquals("Testing third to last node", new Integer(1), 
+tail.getPrevious().getPrevious().getElement());
+    assertEquals("Testing front of list", null, 
+tail.getPrevious().getPrevious().getPrevious());
+    
+    assertEquals("Testing node at front of list", new Integer(1), 
+head.getElement());
+    assertEquals("Testing second node of list", new Integer(2), 
+head.getNext().getElement());
+    assertEquals("Testing third node of list", new Integer(3), 
+head.getNext().getNext().getElement());
+    assertEquals("Testing end of list", null, head.getNext().getNext().getNext());
+  }
+  
+  /**
+   * Test the equals method 
+   */ 
+  @Test
+  public void testEquals() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    DoubleLinkedList<String> dll2 = new DoubleLinkedList<String>(); 
+    assertEquals("Testing equals method EMPTY", true, dll.equals(dll2)); 
+    dll.addToFront("A"); 
+    dll2.addToFront("A"); 
+    assertEquals("Testing equals method equal ONE", true, dll.equals(dll2)); 
+    dll.addToFront("C"); 
+    assertEquals("Testing equals method unequal ONE", false, dll.equals(dll2)); 
+    dll.addToFront("G"); 
+    dll.addToFront("T"); 
+    dll2.addToFront("C"); 
+    dll2.addToFront("G"); 
+    dll2.addToFront("T"); 
+    assertEquals("Testing add to front method equal MANY", true, dll.equals(dll2));
+    dll2.addToFront("C"); 
+    dll2.addToFront("G"); 
+    dll2.addToFront("T"); 
+    assertEquals("Testing add to front method unequal MANY", false, 
+dll.equals(dll2)); 
+  } 
+  
+  /**
+   * Test the append method  
+   */ 
+  @Test
+  public void testAppend() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.append(new DoubleLinkedList<String>()); 
+    assertEquals("Testing append method EMPTY", null, dll.getFront()); 
+    DoubleLinkedList<String> dll2 = new DoubleLinkedList<String>(); 
+    dll2.addToBack("Hi"); 
+    dll.append(dll2); 
+    assertEquals("Testing append method ONE", "Hi", dll.getBack().getElement()); 
+    DoubleLinkedList<String> dll3 = new DoubleLinkedList<String>(); 
+    dll3.addToBack("My"); 
+    dll3.addToBack("Name"); 
+    dll3.addToBack("Is"); 
+    dll3.addToBack("Jaiden"); 
+    dll.append(dll3); 
+    assertEquals("Testing append method MANY", "Jaiden", 
+dll.getBack().getElement()); 
+  } 
+  
+  /**
+   * Test the iterator method 
+   */ 
+  @Test
+  public void testIterator() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    assertEquals("Testing iterator method EMPTY", null, iterator.getCurrent()); 
+  } 
+  
+  /**
+   * Test the getCurrent method 
+   */ 
+  @Test
+  public void testGetCurrent() { 
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack("A"); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.add("B"); 
+    iterator.next(); 
+    assertEquals("Testing get current method ONE", "B", 
+iterator.getCurrent().getElement()); 
+    iterator.add("C"); 
+    iterator.add("T"); 
+    iterator.next(); 
+    iterator.next(); 
+    assertEquals("Testing get current method MANY", "C", 
+iterator.getCurrent().getElement()); 
+  }
+  
+  /**
+   * Test the setCurrent method 
+   */ 
+  @Test
+  public void testSetCurrent() { 
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.setCurrent(new DLNode<String>(null,null,null)); 
+    assertEquals("Testing set current method EMPTY", null, 
+iterator.getCurrent().getElement()); 
+    iterator.setCurrent(new DLNode<String>("HI",null,null));  
+    assertEquals("Testing set current method ONE", "HI", 
+iterator.getCurrent().getElement()); 
+    iterator.setCurrent(new DLNode<String>("Hello",null,null));  
+    iterator.setCurrent(new DLNode<String>("Hiya :)",null,null));  
+    assertEquals("Testing set current method MANY", "Hiya :)", 
+iterator.getCurrent().getElement()); 
+  } 
+  
+  /**
+   * Test the add method 
+   */ 
+  @Test
+  public void testAdd() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack("A"); 
+    dll.addToBack("B"); 
+    dll.addToBack("C"); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.add(""); 
+    assertEquals("Testing add method EMPTY", "", iterator.next()); 
+    iterator.add("Hello"); 
+    assertEquals("Testing add method ONE", "Hello", iterator.next()); 
+    iterator.add("Hey you!"); 
+    iterator.add("Help is never coming"); 
+    assertEquals("Testing add method MANY", "Help is never coming", 
+iterator.next()); 
+  } 
+  
+  /**
+   * Test the hasNext method 
+   */ 
+  @Test
+  public void testHasNext() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    DLNode<String> n = new DLNode<String>("",null,null); 
+    iterator.setCurrent(n); 
+    assertEquals("Testing has next method EMPTY", false, iterator.hasNext()); 
+    iterator.add("Hello"); 
+    assertEquals("Testing has next method ONE", true, iterator.hasNext()); 
+    iterator.add("Hey everyone!"); 
+    iterator.add("Help is futile"); 
+    assertEquals("Testing has next method MANY", true, iterator.hasNext());     
+  } 
+  
+  /**
+   * Test the hasPrevious method 
+   */ 
+  @Test
+  public void testHasPrevious() { 
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    DLNode<String> n = new DLNode<String>("",null,null); 
+    iterator.setCurrent(n); 
+    assertEquals("Testing has previous method EMPTY", false, 
+iterator.hasPrevious()); 
+    iterator.add("Hello"); 
+    iterator.next(); 
+    assertEquals("Testing has previous method ONE", true, iterator.hasPrevious()); 
+    iterator.add("Hey there"); 
+    iterator.add("Help is hopeless"); 
+    assertEquals("Testing has previous method MANY", true, iterator.hasPrevious());
+  } 
+  
+  /**
+   * Test the next method 
+   */ 
+  @Test
+  public void testNext() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack("A"); 
+    dll.addToBack("B"); 
+    dll.addToBack("C"); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.add(""); 
+    assertEquals("Testing next method EMPTY", "", iterator.next()); 
+    iterator.add("Hello"); 
+    assertEquals("Testing next method ONE", "Hello", iterator.next()); 
+    iterator.add("Hey Guys"); 
+    iterator.add("Help PleEEEAsee"); 
+    assertEquals("Testing next method MANY", "Help PleEEEAsee", iterator.next()); 
+  } 
+  
+  /**
+   * Test the previous method 
+   */ 
+  @Test
+  public void testPrevious() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack("A"); 
+    dll.addToBack("B"); 
+    dll.addToBack("C"); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.add(""); 
+    assertEquals("Testing previous method EMPTY", "", iterator.previous()); 
+    iterator.add("Hello"); 
+    assertEquals("Testing previous method ONE", "Hello", iterator.previous()); 
+    iterator.add("Hey Hi"); 
+    iterator.add("Help ME PLEASE"); 
+    assertEquals("Testing previous method MANY", "Help ME PLEASE", 
+iterator.previous()); 
+  } 
+  
+  /**
+   * Test the set method 
+   */ 
+  @Test
+  public void testSet() {
+    DoubleLinkedList<String> dll = new DoubleLinkedList<String>(); 
+    dll.addToBack("A"); 
+    dll.addToBack("B"); 
+    dll.addToBack("C"); 
+    DoubleLinkedListIterator<String> iterator = dll.iterator(); 
+    iterator.set(""); 
+    assertEquals("Testing set method EMPTY", "", 
+iterator.getCurrent().getElement()); 
+    iterator.set("HI"); 
+    assertEquals("Testing set method ONE", "HI", 
+iterator.getCurrent().getElement()); 
+    iterator.set("Hello World"); 
+    assertEquals("Testing set method MANY", "Hello World", 
+iterator.getCurrent().getElement()); 
+  } 
+  
+  /**
+   * Tests the linked list iterator.
+   *
+  @Test
+  public void testListIterator() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    for (int i = 5; i > 0; i--)
+      list.addToFront(i);
+    
+    // checking that we get out what we put it 
+    int i = 1;
+    for (Integer x: list)
+      assertEquals("Testing value returned by iterator", new Integer(i++), x);
+    
+    if (i != 6)
+      fail("The iterator did not run through all the elements of the list");
+  } */ 
+    
+  /**
+   * Tests the removeFromFront method of DoubleLinkedList.
+   */
+  //@Test
+  /**public void testRemoveFromFront() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    list.addToFront(1);
+    list.addToFront(2);
+    list.addToFront(3);
+    assertEquals("Removing element of list", new Integer(3), 
+list.removeFromFront());
+    assertEquals("Removing a second element", new Integer(2), 
+list.removeFromFront());
+    assertEquals("Removing a third element", new Integer(1), 
+list.removeFromFront());
+    assertEquals("Removed last element of list", true, list.isEmpty());
+    try {
+      list.removeFromFront();
+      fail("Removing from empty list did not throw an exception.");
+    } catch (java.util.NoSuchElementException e) {
+    } catch (Exception e) {
+      fail("Removing from empty list threw the wrong type of exception.");
+    }
+    
+    list.addToBack(6);
+    list.addToBack(7);
+    assertEquals("Removing element added to back of list", new Integer(6), 
+list.removeFromFront());
+    assertEquals("Removing second element added to back", new Integer(7), 
+list.removeFromFront());
+  }*/ 
+  
+  /**
+   * Tests the removeFromBack method of DoubleLinkedList.
+   */
+  //@Test
+  /**public void testRemoveFromBack() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    list.addToBack(5);
+    list.addToFront(4);
+    list.addToBack(6);
+    assertEquals("Removing element from back of list", new Integer(6), 
+list.removeFromBack());
+    assertEquals("Removing second element from back of list", new Integer(5), 
+list.removeFromBack());
+    assertEquals("Removing element from back that was added to front", new 
+Integer(4), list.removeFromBack());
+    assertEquals("Removing last element of list", true, list.isEmpty());
+    try {
+      list.removeFromBack();
+      fail("Removing from empty list did not throw an exception.");
+    }
+    catch (java.util.NoSuchElementException e) { 
+    }
+    catch (Exception e) {
+      fail("Removing from empty list threw the wrong type of exception.");
+    }
+  }*/ 
+  
+  /**
+   * Tests the remove feature of the linked list iterator.
+   */
+  //@Test
+  /**public void testListIteratorRemove() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+    for (int i = 5; i > 0; i--)
+      list.addToFront(i);
+    
+    // testing removing the first element through the iterator 
+    Iterator<Integer> listIterator = list.iterator();
+    listIterator.next();
+    listIterator.remove();
+    
+    // the list should now be 2 through 5 
+    int i = 2;
+    for (Integer x: list)
+      assertEquals("The iterator failed when removing the first element", new 
+Integer(i++), x);
+    if (i != 6)
+      fail("The iterator failed when removing the first element");
+    
+    // testing removing element 3 
+    listIterator = list.iterator();
+    listIterator.next();
+    listIterator.next();
+    listIterator.remove();
+    
+    DLNode<Integer> head = list.getFront();
+    DLNode<Integer> tail = list.getBack();
+    
+    assertEquals("Iterator failed to remove middle element", new Integer(2), 
+head.getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(4), 
+head.getNext().getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(5), 
+head.getNext().getNext().getElement());
+    assertEquals("Iterator failed to remove middle element", null, 
+head.getNext().getNext().getNext());
+    
+    assertEquals("Iterator failed to remove middle element", new Integer(5), 
+tail.getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(4), 
+tail.getPrevious().getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(2), 
+tail.getPrevious().getPrevious().getElement());
+    assertEquals("Iterator failed to remove middle element", null, 
+tail.getPrevious().getPrevious().getPrevious());
+    
+    // testing removing the last element 
+    while (listIterator.hasNext())
+      listIterator.next();
+    listIterator.remove();
+    
+    head = list.getFront();
+    tail = list.getBack();
+    
+    assertEquals("Iterator failed to remove middle element", new Integer(2), 
+head.getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(4), 
+head.getNext().getElement());
+    assertEquals("Iterator failed to remove middle element", null, 
+head.getNext().getNext());
+    
+    assertEquals("Iterator failed to remove middle element", new Integer(4), 
+tail.getElement());
+    assertEquals("Iterator failed to remove middle element", new Integer(2), 
+tail.getPrevious().getElement());
+    assertEquals("Iterator failed to remove middle element", null, 
+tail.getPrevious().getPrevious());
+    
+    // testing removing before calling next 
+    listIterator = list.iterator();
+    try {
+      listIterator.remove();
+      fail("Calling iterator's remove() before calling next() should throw an 
+IllegalStateException");
+    }
+    catch (IllegalStateException e) {
+      // all is good
+    } 
+    catch (Exception e) {
+      fail("The wrong exception thrown by the iterator remove() method.");
+    }
+  }*/ 
+} 
