@@ -1,0 +1,88 @@
+**GENERAL METHODS**
+Method getFirstName must be tested with strings of different lengths 
+(0,1,many)
+Method getLastName must be tested with strings of different lengths 
+(0,1,many)
+Method setName must be tested with strings of different lengths (0,1,many)
+Method getNumber must be tested with strings of different lengths 
+(0,1,many)
+Method setBonus must be tested with doubles of different values (0,1,many)
+Method getBonus must be tested with doubles of different values (0,1,many)
+Method equals must be tested with employees with different inputs (equal, 
+not equal)
+Method compareToByName must be tested with strings of different lengths 
+(0,1,many)
+Method compareToByEarnings must be tested with doubles of different values 
+(0,1,many)
+Method setSupervisor must be tested with employees with different inputs
+Method getSupervisor must be tested with employees with different inputs
+**HOURLY EMPLOYEE**
+Method **getAmountEarned** must be tested with doubles of different values 
+(0,1,many)
+Method **adjustPay** mist be tested with doubles of different values 
+(0,1,many)
+Method **toString** must be tested with employees with different inputs
+Method **setHourlyRate** must be tested with doubles of different values 
+(0,1,many)
+Method **getHourlyRate** must be tested with doubles of different values 
+(0,1,many)
+Method **setHoursWorked** must be tested with doubles of different values 
+(0,1,many)
+Method **getHoursWorked** must be tested with doubles of different values 
+(0,1,many)
+**HOURLY SUPERVISOR** (methods different from hourly employee)
+Method **toString** must be tested with employees with different inputs
+**SALARIED EMPLOYEE**
+Method **getSalary** must be tested with doubles of different values 
+(0,1,many)
+Method **setSalary** must be tested with doubles of different values 
+(0,1,many)
+Method **getAmountEarned** must be tested with doubles of different values 
+(0,1,many)
+Method **adjustPay** mist be tested with doubles of different values 
+(0,1,many)
+Method **toString** must be tested with employees with different inputs
+**SALARIED SUPERVISOR** (methods different from salaried employee)
+Method **toString** must be tested with employees with different inputs
+**SALES EMPLOYEE**
+Method **getSalary** must be tested with doubles of different values 
+(0,1,many)
+Method **setSalary** must be tested with doubles of different values 
+(0,1,many)
+Method **getCommission** must be tested with doubles of different values 
+(0,1,many)
+Method **setCommission** must be tested with doubles of different values 
+(0,1,many)
+Method **getNumSales** must be tested with ints of different values 
+(0,1,many)
+Method **setNumSales** must be tested with ints of different values 
+(0,1,many)
+Method **getAmountEarned** must be tested with doubles of different values 
+(0,1,many)
+Method **adjustPay** mist be tested with doubles of different values 
+(0,1,many)
+Method **toString** must be tested with employees with different inputs
+**SALES SUPERVISOR** (methods different from sales employee)
+Method **toString** must be tested with employees with different inputs
+**EMPLOYEE DATABASE**
+Method **add** must be tested with employees with different inputs
+Method **remove** must be tested with strings of different lengths 
+(0,1,many)
+Method **find** must be tested with strings of different lengths 
+(0,1,many)
+Method **getPayrollAmount** must be tested with doubles of different 
+values (0,1,many)
+Method **getMaximumEarned** must be tested with employees lists with 
+different employees
+Method **getMinimumEarned** must be tested with employees lists with 
+different employees
+Method **getMaxSales** must be tested with employees lists with different 
+employees
+Method **getMinSales** must be tested with employees lists with different 
+employees
+Method **getMaxHoursWorked** must be tested with employees lists with 
+different employees
+Method **getMinHoursWorked** must be tested with employees lists with 
+different employees
+Method **getSupervisees** must be tested with employees with different 
+inputs
