@@ -1,0 +1,23 @@
+/**
+* The DNA class testing plan document
+*
+* @author <em>Jaiden Borowski</em>
+*/
+Method getDNAList() must be tested with empty, one & many nodes
+Method setDNAList(DoubleLinkedList<Base> newDNAList) must be tested with 
+empty DoubleLinkedList, a DoubleLinkedList with one node, and a 
+DoubleLinkedList with many nodes
+Method toString() must be tested with an empty list, a list with one node, 
+and a list with many nodes
+Method string2DNA(String s) must be tested with with an empty string, a 
+string with one char, and a string with many chars
+Method splice(DNA dna, int numbases) must be tested with different 
+numbases and dna lists of different lengths (0, 1, and many nodes)
+Method overlaps(DNA dna1, DNA dna2, int n) must be tested with n of 
+different lengths and DNA objects with different length 
+DoubleLinkedLists(0,1,many)
+Method compareTo(DNA inputDNA) must be tested with dna's with different 
+length lists (0 nodes, 1 node, many nodes) and with equal and unequal 
+lists.
+Method main(String[] args) must be tested with different size strings (0, 
+1, many)
