@@ -1,0 +1,35 @@
+/**
+* The DoubleLinkedList class testing plan document
+*
+* @author <em>Jaiden Borowski</em>
+*/
+Method isEmpty() must be tested when front is null & not null
+Method getFront() must be tested when front is null & not null
+Method setFront(DLNode<T> node) must be tested when front is null & not 
+null with inputs null & not null
+Method getBack() must be tested when back is null & not null
+Method setBack(DLNode<T> node) must be tested when back is null & not null 
+with inputs null & not null
+Method addToFront(T element) must be tested when list is empty & not empty 
+with inputs null & not null
+Method addToBack(T element) must be tested when list is empty & not empty 
+with inputs null & not null
+Method equals(Object o) must be tested with DoubleLinkedList objects null, 
+equal, & not equal (and with non DoubleLinkedList objects)
+Method append(DoubleLinkedList<T> inputList) must be tested when list is 
+empty & not empty with inputs empty/null, one node, and many nodes
+Method add(T element) must be tested with elements of different sizes (0, 
+1, many) on different length lists.
+Method hasNext() must be tested with lists of different lengths (empty, 1 
+node, many nodes)
+Method hasPrevious() must be tested with lists of different lengths 
+(empty, 1 node, many nodes)
+Method next() must be tested with lists of different lengths (empty, 1 
+node, many nodes)
+Method nextIndex() does not need to be tested.
+Method previous() must be tested with lists of different lengths (empty, 1 
+node, many nodes)
+Method previousIndex() does not need to be tested.
+Method remove() must be tested with does not need to be tested.
+Method set(T element) must be tested with elements of different sizes (0, 
+1, many)
